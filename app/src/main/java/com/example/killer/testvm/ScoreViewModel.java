@@ -12,4 +12,14 @@ public class ScoreViewModel extends ViewModel{
         }
         return score;
     }
+
+    public void addScore() {
+        score += 1;
+    }
+
+
+    public void resetScore() {
+        score = 0;
+    }
+
 }
