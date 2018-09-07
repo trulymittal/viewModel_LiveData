@@ -5,21 +5,11 @@ import android.arch.lifecycle.ViewModel;
 
 public class ScoreViewModel extends ViewModel{
 
-//    private Integer score;
-
-//    public Integer getScore() {
-//        if (score == null) {
-//            return 0;
-//        }
-//        return score;
-//    }
-
     private MutableLiveData<Integer> score;
 
     public MutableLiveData<Integer> getScore() {
         if (score == null) {
             score = new MutableLiveData<>();
-//            score.postValue(0);
             resetScore();
         }
         return score;

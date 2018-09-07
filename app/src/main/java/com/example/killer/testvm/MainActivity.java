@@ -56,27 +56,14 @@ public class MainActivity extends AppCompatActivity {
                 resetScore();
             }
         });
-
-//        resetScore();
-
-//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
-
     }
 
     public void addScore() {
         scoreViewModel.addScore();
-//        score += 1;
-//        scoreTextView.setText(String.valueOf(score));
-//        scoreViewModel.addScore();
-//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
     }
     
     public void resetScore() {
         scoreViewModel.resetScore();
-//        score = 0;
-//        scoreTextView.setText(String.valueOf(score));
-//        scoreViewModel.resetScore();
-//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
     }
     
     
