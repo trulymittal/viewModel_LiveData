@@ -26,7 +26,9 @@ public class ScoreViewModel extends ViewModel{
     }
 
     public void addScore() {
-        score.setValue(score.getValue() + 1);
+        if (score.getValue() != null) {
+            score.setValue(score.getValue() + 1);
+        }
     }
 
     public void resetScore() {
