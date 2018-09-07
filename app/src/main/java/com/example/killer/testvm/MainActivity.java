@@ -1,6 +1,9 @@
 package com.example.killer.testvm;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Button addScoreButton, resetScoreButton;
     TextView scoreTextView;
 
-    Integer score = 0;
-    
+//    Integer score;
+    ScoreViewModel scoreViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +44,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        resetScore();
+        scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
+
+        scoreViewModel.getScore().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                scoreTextView.setText(String.valueOf(integer));
+            }
+        });
+
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+
+
+
+//        score = 0;
+//        scoreTextView.setText(String.valueOf(score));
+
     }
 
     public void addScore() {
-        score += 1;
-        scoreTextView.setText(String.valueOf(score));
+
+        scoreViewModel.addScore();
+
+//        scoreViewModel.addScore();
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+
+//        score += 1;
+//        scoreTextView.setText(String.valueOf(score));
     }
     
     public void resetScore() {
-        score = 0;
-        scoreTextView.setText(String.valueOf(score));
+        scoreViewModel.resetScore();
+//        scoreViewModel.resetScore();
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+//        score = 0;
+//        scoreTextView.setText(String.valueOf(score));
     }
     
-    
-    
-    
-    
+
 }
