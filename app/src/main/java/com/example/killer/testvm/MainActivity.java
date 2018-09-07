@@ -46,7 +46,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        resetScore();
+//        resetScore();
+
+        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+
     }
 
     public void addScore() {

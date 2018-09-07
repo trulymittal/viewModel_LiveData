@@ -14,6 +14,9 @@ public class ScoreViewModel extends ViewModel{
     }
 
     public void addScore() {
+        if (score == null) {
+            score = 0;
+        }
         score += 1;
     }
 
