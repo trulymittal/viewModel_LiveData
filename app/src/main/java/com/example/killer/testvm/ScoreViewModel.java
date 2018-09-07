@@ -4,7 +4,7 @@ import android.arch.lifecycle.ViewModel;
 
 public class ScoreViewModel extends ViewModel{
 
-    Integer score;
+    private Integer score;
 
     public Integer getScore() {
         if (score == null) {
@@ -16,7 +16,6 @@ public class ScoreViewModel extends ViewModel{
     public void addScore() {
         score += 1;
     }
-
 
     public void resetScore() {
         score = 0;
