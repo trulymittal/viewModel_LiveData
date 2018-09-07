@@ -1,5 +1,8 @@
 package com.example.killer.testvm;
 
+import android.arch.lifecycle.ViewModel;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     Button addScoreButton, resetScoreButton;
     TextView scoreTextView;
 
-    Integer score = 0;
-    
+//    Integer score = 0;
+    ScoreViewModel scoreViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView = findViewById(R.id.scoreTextView);
         addScoreButton = findViewById(R.id.addScoreButton);
         resetScoreButton = findViewById(R.id.resetScoreButton);
+
+        scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
         addScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addScore() {
-        score += 1;
-        scoreTextView.setText(String.valueOf(score));
+//        score += 1;
+//        scoreTextView.setText(String.valueOf(score));
     }
     
     public void resetScore() {
-        score = 0;
-        scoreTextView.setText(String.valueOf(score));
+//        score = 0;
+//        scoreTextView.setText(String.valueOf(score));
     }
     
     
