@@ -1,9 +1,11 @@
 package com.example.killer.testvm;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
 
         scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
+        scoreViewModel.getScore().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(@Nullable Integer integer) {
+                Log.i(TAG, "onChanged: ");
+                scoreTextView.setText(String.valueOf(integer));
+            }
+        });
+
+
         addScoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,22 +59,24 @@ public class MainActivity extends AppCompatActivity {
 
 //        resetScore();
 
-        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
 
     }
 
     public void addScore() {
+        scoreViewModel.addScore();
 //        score += 1;
 //        scoreTextView.setText(String.valueOf(score));
-        scoreViewModel.addScore();
-        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+//        scoreViewModel.addScore();
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
     }
     
     public void resetScore() {
+        scoreViewModel.resetScore();
 //        score = 0;
 //        scoreTextView.setText(String.valueOf(score));
-        scoreViewModel.resetScore();
-        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
+//        scoreViewModel.resetScore();
+//        scoreTextView.setText(String.valueOf(scoreViewModel.getScore()));
     }
     
     
